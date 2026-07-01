@@ -9,7 +9,7 @@ In Claude Code:
 
 ```
 /plugin marketplace add JacksonWong123/team-claude-skills
-/plugin install feeds-qa-tools@team-claude-skills
+/plugin install tools@team-claude-skills
 ```
 
 `owner/repo` shorthand works for public repos. For a private repo over SSH, use the full URL:
@@ -22,7 +22,7 @@ After install the skills are available immediately — no restart needed.
 
 ## What's included
 
-The `feeds-qa-tools` plugin bundles two skills:
+The `tools` plugin bundles two skills:
 
 | Skill | Command | What it does |
 |-------|---------|--------------|
@@ -42,8 +42,8 @@ site identifier — no per-user editing required.
 
 ## Updating
 
-Maintainers: edit the skill files under `plugins/feeds-qa-tools/skills/`, bump `version`
-in `plugins/feeds-qa-tools/.claude-plugin/plugin.json`, and push. Teammates pull updates with:
+Maintainers: edit the skill files under `plugins/tools/skills/`, bump `version`
+in `plugins/tools/.claude-plugin/plugin.json`, and push. Teammates pull updates with:
 
 ```
 /plugin marketplace update team-claude-skills
@@ -53,7 +53,7 @@ in `plugins/feeds-qa-tools/.claude-plugin/plugin.json`, and push. Teammates pull
 
 ```
 .claude-plugin/marketplace.json      # marketplace manifest (lists plugins)
-plugins/feeds-qa-tools/
+plugins/tools/
   .claude-plugin/plugin.json         # plugin manifest
   skills/
     write-kt-doc/{SKILL.md,SOP.md,prompts/}

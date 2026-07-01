@@ -7,13 +7,13 @@
   },
   "plugins": [
     {
-      "name": "feeds-qa-tools",
+      "name": "tools",
       "description": "Feeds QA productivity skills: /write-kt-doc (code-grounded KT/onboarding wikis published to Confluence) and /work-report (daily/weekly work reports from GitHub + Jira + Confluence).",
       "author": {
         "name": "Jackson Wong"
       },
       "category": "productivity",
-      "source": "./plugins/feeds-qa-tools"
+      "source": "./plugins/tools"
     }
   ]
 }
