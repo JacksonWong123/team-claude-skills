@@ -14,13 +14,13 @@ issue; open issues become the next-period plan.
 User asks for a daily/weekly work summary, 日报, 周报, standup, or "what did I do
 today / this week".
 
-## Fixed parameters (this user's environment)
+## Fixed parameters (team environment — Edison / YipitData)
 | Thing | Value |
 |-------|-------|
 | Atlassian cloudId | `0632a3fb-15aa-4b67-b1f9-db7b2e773915` (site `yipitdata5`) |
-| GitHub author / org | `JacksonWong123` / `agent8` |
+| GitHub author / org | auto-detected via `gh api user` / `agent8` (override author with `WORK_REPORT_GH_AUTHOR`) |
 | Confluence space | `ED` (Edison) |
-| Timezone | `Asia/Chongqing` |
+| Timezone | runner's system timezone (override with `WORK_REPORT_TZ`) |
 
 ### Jira project → product mapping
 | Project key | Product |

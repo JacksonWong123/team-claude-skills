@@ -14,10 +14,16 @@
 set -euo pipefail
 
 MODE="${1:-daily}"
-TZNAME="Asia/Chongqing"
-AUTHOR="JacksonWong123"
-OWNER="agent8"
-OFFSET="+08:00"   # Asia/Chongqing is fixed UTC+8, no DST
+# Identity resolves to the person RUNNING the skill, not whoever authored it.
+TZNAME="${WORK_REPORT_TZ:-}"   # empty = runner's system timezone; override via WORK_REPORT_TZ
+AUTHOR="${WORK_REPORT_GH_AUTHOR:-$(gh api user --jq .login 2>/dev/null)}"
+OWNER="agent8"                 # team default org
+if [ -z "$AUTHOR" ]; then
+  echo "ERROR: could not resolve GitHub login (gh api user failed). Run 'gh auth login' or set WORK_REPORT_GH_AUTHOR." >&2
+  exit 3
+fi
+if [ -n "$TZNAME" ]; then export TZ="$TZNAME"; fi
+OFFSET="$(date +%z | sed -E 's/([0-9]{2})$/:\1/')"   # +0800 -> +08:00
 
 case "$MODE" in
   daily|weekly) ;;
@@ -25,21 +31,21 @@ case "$MODE" in
 esac
 
 # --- compute window (local time) -------------------------------------------
-today=$(TZ="$TZNAME" date +%Y-%m-%d)
+today=$(date +%Y-%m-%d)
 if [ "$MODE" = "daily" ]; then
   start_date="$today"
 else
   # weekly: back up to Monday of the current week (%u: 1=Mon .. 7=Sun)
-  dow=$(TZ="$TZNAME" date +%u)
+  dow=$(date +%u)
   days_back=$(( dow - 1 ))
-  start_date=$(TZ="$TZNAME" date -v-"${days_back}"d +%Y-%m-%d)
+  start_date=$(date -v-"${days_back}"d +%Y-%m-%d)
 fi
 end_date="$today"
 
 start_iso="${start_date}T00:00:00${OFFSET}"
-end_iso=$(TZ="$TZNAME" date +%Y-%m-%dT%H:%M:%S)"${OFFSET}"
+end_iso=$(date +%Y-%m-%dT%H:%M:%S)"${OFFSET}"
 
-echo "WINDOW mode=${MODE} start=${start_date} end=${end_date} start_iso=${start_iso} end_iso=${end_iso} tz=${TZNAME}"
+echo "WINDOW mode=${MODE} start=${start_date} end=${end_date} start_iso=${start_iso} end_iso=${end_iso} tz=${TZNAME:-$(date +%Z)}${OFFSET}"
 echo ""
 
 range="${start_iso}..${end_iso}"

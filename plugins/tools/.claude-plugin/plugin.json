@@ -1,9 +1,9 @@
 {
   "name": "tools",
-  "description": "Feeds QA productivity skills: /write-kt-doc (code-grounded KT/onboarding wikis published to Confluence) and /work-report (daily/weekly work reports from GitHub + Jira + Confluence).",
+  "description": "Productivity skills: /write-kt-doc (code-grounded KT/onboarding wikis published to Confluence) and /work-report (daily/weekly work reports from GitHub + Jira + Confluence).",
   "version": "0.1.0",
   "author": {
-    "name": "Jackson Wong"
+    "name": "Zhizhen Huang"
   },
   "keywords": [
     "documentation",
