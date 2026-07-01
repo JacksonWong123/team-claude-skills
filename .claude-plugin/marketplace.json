@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "team-claude-skills",
+  "description": "Shared Claude Code skills for the Platform QA / Feeds team at YipitData/Edison.",
+  "owner": {
+    "name": "Jackson Wong"
+  },
+  "plugins": [
+    {
+      "name": "feeds-qa-tools",
+      "description": "Feeds QA productivity skills: /write-kt-doc (code-grounded KT/onboarding wikis published to Confluence) and /work-report (daily/weekly work reports from GitHub + Jira + Confluence).",
+      "author": {
+        "name": "Jackson Wong"
+      },
+      "category": "productivity",
+      "source": "./plugins/feeds-qa-tools"
+    }
+  ]
+}
