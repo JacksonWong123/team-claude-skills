@@ -1,6 +1,6 @@
 # team-claude-skills
 
-Shared [Claude Code](https://code.claude.com) skills for the Platform QA / Feeds team,
+Shared [Claude Code](https://code.claude.com) skills for the team,
 distributed as a plugin marketplace.
 
 ## Install
