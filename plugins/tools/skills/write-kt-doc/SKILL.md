@@ -130,8 +130,10 @@ time-sensitive facts are tagged, and unverifiable claims are deleted or panel-fl
 
 ### Loop C — de-AI  (`LOOP = deai`)
 Facts frozen. The reviewer (`reviewer-deai.md`) enforces: no emoji, sentences ≤ 30 words
-(split on `;`), no filler phrases, no em-dash overuse, no marketing adjectives, and no
-dropped citation (vs `citations.lock`).
+(split on `;`), no filler phrases, no em-dash overuse, no marketing adjectives, no `bloat`
+(out-of-scope content, a caveat repeated across sections, or citations over-proving one
+fact), and no dropped citation (vs `citations.lock`, except citations removed as part of an
+accepted `bloat` deletion).
 
 ### Loop D — format/detail  (`LOOP = format`)
 Facts frozen. The reviewer (`reviewer-format.md`) enforces: no code-block line > 90 chars
@@ -158,6 +160,8 @@ asked.
   the `spaceId` (numeric — `getConfluenceSpaces` with the space `key`).
 - `createConfluencePage` with `contentFormat: "html"` (the draft is storage-format HTML),
   `status: "draft"`, `parentId` = the parent page id. The body is `draft.md` verbatim.
+- Title convention: **"«Topic» — KT for «Audience»"** (e.g. "Insight De-dup Logic — KT for
+  Platform QA").
 - HTML supports headings, tables, `data-type="panel-info|warning|note"`, code blocks,
   internal links. Keep nesting valid (no block-in-inline; no headings in table cells).
 - Re-fetch with `getConfluencePage` to verify render (tables, panels, links) before
@@ -168,5 +172,10 @@ asked.
 - A "complete" doc that re-explains everything instead of linking — bloated and instantly
   stale. Reuse existing docs; write new content only where THIS audience differs.
 - Citing `file.py:123` you never opened — the fact reviewer will catch it; don't ship it.
+- Citing a local/seed file path the audience can't open, or guessing an author/owner/date —
+  cite a shareable link or drop the claim.
+- Out-of-scope "for awareness" padding, a caveat repeated across sections, or several
+  citations over-proving one fact — the human just deletes these; the `bloat` check does too.
 - Publishing live without asking, or publishing past a non-pass stop.
-- Letting de-AI or format edits silently drop a citation — `citations.lock` guards this.
+- Letting de-AI or format edits silently drop a citation — `citations.lock` guards this
+  (the one exception is a citation removed as part of an accepted `bloat` deletion).
