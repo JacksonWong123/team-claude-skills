@@ -36,7 +36,14 @@ cells. A human-verification flag is a warning panel (see the `facts` section).
    URLs, Jira keys, or pages that appear in `materials.md`. If a claim has no source,
    it does not go in the draft (see the `facts` loop for how to handle it).
 3. **One canonical term per concept** — use the glossary's chosen name consistently.
-4. Your final message is a one-line confirmation (e.g. `facts round 1: drafted N
+4. **References must be audience-openable.** Never cite a local/seed file path (e.g. the
+   user's seed doc on disk) in the draft — the reader cannot open it. Seed docs are
+   *inputs*, not output citations. When their content is needed, cite the shareable
+   underlying source (Confluence / Jira / ProcessOn / GitHub URL) from `materials.md`
+   instead. An in-repo `file:line` is fine because the doc frames it as code, not as a
+   reader link. Attribution (author / owner / date) is a factual claim: cite it or omit it,
+   never guess.
+5. Your final message is a one-line confirmation (e.g. `facts round 1: drafted N
    sections, F flags`). The doc itself goes in the file, not your message.
 
 ## Procedure (all loops)
@@ -76,9 +83,23 @@ Reuse existing docs by linking, do not re-transcribe what another wiki already c
 well. **Link at first mention:** every in-body reference to a wiki/tool/dashboard/doc is
 an inline `<a>` right where it is named.
 
+**Scope & leanness** — the human's edits to a KT draft are almost always deletions, so cut
+before they have to:
+- Write only what the audience must know or do. Cut "for awareness" lists, "out of scope"
+  footnotes, and "do not confuse X with Y" asides unless the audience actually hits X.
+- One citation per fact. Do not enumerate every line that proves an already-clear fact, and
+  do not restate "this matches <wiki>" after you have already aligned with it.
+- State each caveat once, in the section where it matters most; do not repeat it in a later
+  table or panel. Keep a "regression focus" / pitfalls section about actual risks, not
+  doc-maintenance advice.
+
 ## LOOP = deai  (facts are frozen — tone only)
 Do **not** change any fact, number, citation, link, or warning panel. Every entry in
-`CITATIONS_LOCK_PATH` must still be present. Apply only:
+`CITATIONS_LOCK_PATH` must still be present — **except** when a `bloat` checklist item
+tells you to delete out-of-scope content; then the citations that lived only inside that
+removed content are intentionally gone, and dropping them is correct. Over-citation and
+repeated-caveat fixes only remove *duplicate* refs, so the unique citation still remains
+elsewhere. Apply only:
 - **No emoji.** Remove every one.
 - **Sentence ≤ 30 words.** When a sentence runs long, first **split** it — break at a
   `;` or natural clause boundary into separate short sentences, preserving every fact and
@@ -94,6 +115,10 @@ Do **not** change any fact, number, citation, link, or warning panel. Every entr
   `NEEDS HUMAN VERIFICATION` warning panels are deliberate verifier-facing artifacts, not
   meta-commentary — leave them exactly as they are (per the "do not change any warning
   panel" rule above).
+- **No bloat.** When the checklist flags `bloat`, delete the content: an out-of-scope /
+  "for awareness" paragraph or panel, a caveat already stated in another section, or the
+  redundant `file:line` refs / "this matches <wiki>" restatement over-proving one fact.
+  Keep the single place the fact belongs. Do not rewrite facts — only remove the surplus.
 
 ## LOOP = format  (facts are frozen — rendering only)
 Do **not** change any fact, citation, or wording beyond what formatting requires. Every

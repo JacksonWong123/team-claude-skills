@@ -38,8 +38,8 @@ right; it is verified because you read the line.
 ## Rubric — one category per failure type
 | `category` | Fails when… |
 |------------|-------------|
-| `missing-source` | A factual claim has no source (no `file:line`, link, or reference) and is not a deleted/flagged item. |
-| `invented-citation` | A cited `file:line`, symbol, table, queue, config key, URL, Jira key, or page does not actually exist. Re-open it to check. |
+| `missing-source` | A factual claim has no source (no `file:line`, link, or reference) and is not a deleted/flagged item. Includes **authorship / ownership / date attributions** ("authored by X", "owned by team Y", "added in <date>") — these need a source or must be dropped, never guessed. |
+| `invented-citation` | A cited `file:line`, symbol, table, queue, config key, URL, Jira key, or page does not actually exist. Re-open it to check. Also fails when the draft cites a **local filesystem / seed-doc path the audience cannot open** (e.g. a `.md` on the author's disk): the reader-facing source must be a shareable URL, or an in-repo `file:line` framed as code. |
 | `unverified-highrisk` | A high-risk assertion (data loss, security/PII, money, deletion, "always/never/all/only", a threshold the audience acts on) whose source you could not confirm by reading it. |
 | `code-conflict` | A claim follows a doc/Jira where the code says otherwise; the draft should state the code-true fact and note the discrepancy. |
 | `time-sensitive-unflagged` | A version/behavior/threshold/schedule claim that code can change is not tagged as time-sensitive. |

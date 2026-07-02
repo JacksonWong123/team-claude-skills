@@ -39,7 +39,8 @@ writer did not drop any locked citation while editing tone. You are independent 
 | `emdash-overuse` | More than one em-dash (`—`) in a single paragraph. |
 | `marketing-adjective` | Hype words describe the system instead of its behavior: "powerful", "seamless", "robust", "cutting-edge", "comprehensive", "world-class", etc. |
 | `meta-commentary` | An instruction or aside aimed at the writer/editor, not the reader, leaks into the prose: "reuse those, don't restate", "see above", "TODO", "(writer: …)", "no need to repeat", "as mentioned we should". The reader gains nothing; it is a note-to-self. Fix = delete the aside, keep only reader-facing content. **Never flag `NEEDS HUMAN VERIFICATION` / `data-type="panel-warning"` panels — they are deliberate verifier-facing artifacts, not meta-commentary.** |
-| `citation-dropped` | An entry in `CITATIONS_LOCK_PATH` is missing from the draft — tone editing silently removed a source. |
+| `bloat` | The draft carries content the audience does not need. Three shapes: (a) **out-of-scope / "for awareness"** content — a paragraph or panel telling the reader what is NOT relevant, or listing things they will not act on ("also note these one-time scripts…", "do not confuse X with the out-of-scope Y"); (b) **repeated caveat** — the same warning/distinction stated in more than one section (body + panel, or an intro note re-listed as a pitfalls-table row); (c) **over-citation** — several `file:line` refs proving a single already-clear fact, or a "this matches <wiki>" restatement after the draft has already aligned with that wiki. Fix = delete the redundant/off-scope content, keeping the one place it belongs. A pitfalls/regression section must list actual risks, not doc-maintenance advice. |
+| `citation-dropped` | An entry in `CITATIONS_LOCK_PATH` is missing from the draft — tone editing silently removed a source. **Exception:** a citation that lived only inside content correctly removed as `bloat` is intentionally gone — do not also flag it here. (Over-citation and repeated-caveat fixes remove *duplicate* refs, so the unique citation still appears elsewhere and this never triggers.) |
 
 Notes:
 - Judge the rendered text content, not the HTML tags. Ignore code inside
@@ -47,6 +48,9 @@ Notes:
   loop's domain), but emoji are banned everywhere.
 - Do not invent style failures beyond this rubric — the facts and format are out of
   scope here.
+- `bloat` targets content the human would delete, not phrasing. Be conservative: flag a
+  clear off-scope aside, a caveat you can point to in two sections, or a fact carrying
+  redundant citations — not merely "this section is long."
 
 ## Escalation
 Set `escalate: true` (with `pass: false`) only if `DRAFT_PATH` is missing, empty, or

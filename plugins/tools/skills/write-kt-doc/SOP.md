@@ -14,6 +14,8 @@ A standard operating procedure for writing a knowledge-transfer wiki for a code 
 - **Reuse beats rewrite.** Existing wikis that already nail something (e.g. a field-by-field UI table) should be linked, not re-transcribed. Spend your words where your audience differs from theirs.
 - **A self-checked draft is not a verified draft.** Splitting verification into its own loop, with an independent reviewer that re-opens the code, catches what an author rereading their own prose does not.
 - **Agree the shape before drafting.** A one-line-per-section outline the human signs off on is far cheaper to fix than restructuring a finished draft across three loops. Wrong ordering, a missing topic, or wrong altitude surface here, not after 2,000 words exist.
+- **Cite what the reader can open.** A published doc is read by its audience, not by you. A citation to a local/seed file on your disk, or a guessed author/owner/date, is a defect — every reference must be a shareable link (Confluence / Jira / ProcessOn / GitHub) or an in-repo `file:line` framed as code. Seed docs are inputs, not output citations.
+- **Lean beats complete.** The human's edits to a finished draft are almost always deletions: out-of-scope "for awareness" footnotes, a caveat repeated in two sections, and several citations over-proving one fact. Cut them before publishing. A regression/pitfalls section lists real risks, not doc-maintenance advice.
 
 ---
 
@@ -73,6 +75,7 @@ best draft plus the remaining checklist back to a human.
 - [ ] No emoji. Every sentence ≤ 30 words (split long ones at `;` before condensing).
 - [ ] No filler phrases, no em-dash overuse, no marketing adjectives.
 - [ ] No meta-commentary — asides aimed at the writer/editor ("reuse those, don't restate", "see above", "TODO") are deleted; only reader-facing content remains.
+- [ ] No `bloat` — out-of-scope "for awareness" content, caveats repeated across sections, and citations over-proving one fact are cut (a `bloat` fix may drop citations that lived only in removed content).
 
 ### D. Format/detail loop (facts frozen)  ☐
 - [ ] Writer reflows code-block lines so none exceed **90 chars** (shell continuations, JSON line breaks); truly unbreakable lines marked as accepted exceptions.
@@ -93,7 +96,7 @@ best draft plus the remaining checklist back to a human.
 [ ] A.5 Outline (headings + purpose) drafted, reviewed, and approved by human
 [ ] B. Every claim sourced; code wins conflicts; time-sensitive tagged; unverifiable deleted or panel-flagged
 [ ] B. Reviewer re-opened cited files; passed; citations.lock snapshotted
-[ ] C. No emoji; sentences ≤30 words; no filler/em-dash-overuse/marketing adjectives; no meta-commentary; no citation dropped
+[ ] C. No emoji; sentences ≤30 words; no filler/em-dash-overuse/marketing adjectives; no meta-commentary; no bloat (out-of-scope/repeated-caveat/over-citation); no citation dropped
 [ ] D. Code lines ≤90 chars (or marked exception); valid HTML; links work; no citation dropped
 [ ] E. Location/language/draft confirmed; published; render re-verified; URL + flag summary shared
 ```
@@ -105,7 +108,7 @@ best draft plus the remaining checklist back to a human.
 | Loop | Categories |
 |------|------------|
 | Fact-check | `missing-source`, `invented-citation`, `unverified-highrisk`, `code-conflict`, `time-sensitive-unflagged`, `unverifiable-not-handled` |
-| De-AI | `no-emoji`, `sentence-too-long`, `filler-phrase`, `emdash-overuse`, `marketing-adjective`, `meta-commentary`, `citation-dropped` |
+| De-AI | `no-emoji`, `sentence-too-long`, `filler-phrase`, `emdash-overuse`, `marketing-adjective`, `meta-commentary`, `bloat`, `citation-dropped` |
 | Format | `code-line-too-wide`, `invalid-html`, `broken-link`, `citation-dropped` |
 
 ---
